@@ -1,10 +1,15 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/common/util/local_json.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../vo_simple_stock.dart';
 
-class SearchStockData extends GetxController{
+abstract mixin class SearchStockProvider {
+  late final searchData = Get.find<SearchStockData>();
+}
+
+class SearchStockData extends GetxController {
   List<SimpleStock> stocks = [];
   RxList<String> searchHistoryList = <String>[].obs;
   RxList<SimpleStock> autoCompleteList = <SimpleStock>[].obs;
@@ -17,8 +22,26 @@ class SearchStockData extends GetxController{
     super.onInit();
   }
 
-  Future<void> loadLocalStockJson() async{
-    final jsonList = await LocalJson.getObjectList<SimpleStock>('stock_list.json');
+  Future<void> loadLocalStockJson() async {
+    final jsonList =
+        await LocalJson.getObjectList<SimpleStock>('json/stock_list.json');
     stocks.addAll(jsonList);
+  }
+
+  void search(String keyword) {
+    if(keyword.isEmpty){
+      autoCompleteList.clear();
+      return;
+    }
+    autoCompleteList.value =
+        stocks.where((element) => element.name.contains(keyword)).toList();
+  }
+
+  void addHistory(SimpleStock stock) {
+    searchHistoryList.add(stock.name);
+  }
+
+  void removeHistory(String stockName) {
+    searchHistoryList.remove(stockName);
   }
 }

@@ -1,10 +1,10 @@
 import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/main/tab/stock/search/s_search_stock.dart';
 import 'package:fast_app_base/screen/main/tab/stock/tab/f_my_stock.dart';
 import 'package:fast_app_base/screen/main/tab/stock/tab/f_todays_discovery.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widget/w_image_button.dart';
+import 'search/s_search_stock.dart';
 
 class StockFragment extends StatefulWidget {
   const StockFragment({super.key});

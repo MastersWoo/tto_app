@@ -37,9 +37,4 @@ T _tryConverting<T>(dynamic json) {
     default:
       return SimpleStock.fromJson(json) as T;
   }
-  // switch (T) {
-  //   case ExampleVO:
-  //   default:
-  //     return ExampleVO.fromJson(json) as T;
-  // }
 }

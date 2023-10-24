@@ -14,20 +14,26 @@ class StockItem extends StatelessWidget {
       color: context.backgroundColor,
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
-      children: [
-        width10,
-        Image.asset(stock.stockImagePath, width: 50),
-        width20,
-        (stock.stockName).text.size(18).bold.make(),
-        emptyExpanded,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-          stock.todayPercentageString.text.color(stock.getPriceColor(context)).make(),
-          '${stock.currentPrice.toComma()}원'.text.color(context.appColors.lessImportant).make()
-        ],)
-
-      ],
-    ),);
+        children: [
+          width10,
+          Image.asset(stock.stockImagePath, width: 50),
+          width20,
+          (stock.name).text.size(18).bold.make(),
+          emptyExpanded,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              stock.todayPercentageString.text
+                  .color(stock.getPriceColor(context))
+                  .make(),
+              '${stock.currentPrice.toComma()}원'
+                  .text
+                  .color(context.appColors.lessImportant)
+                  .make()
+            ],
+          )
+        ],
+      ),
+    );
   }
 }

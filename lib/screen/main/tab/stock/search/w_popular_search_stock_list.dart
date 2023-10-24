@@ -11,13 +11,12 @@ class PopularSearchStockList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       Row(children: [
-        '인기 검색'.text.bold.make(),
+        '인기검색'.text.bold.make(),
         emptyExpanded,
-        '오늘 ${DateTime.now().formattedTime} 기준'.text.size(12).make()
+        '오늘 ${DateTime.now().formattedTime} 기준'.text.size(12).make(),
       ],),
       height20,
-      ...popularStockList.mapIndexed((element, index) => PopularStockItem(stock: element, number: index + 1))
-      .toList(),
+      ...popularStockList.mapIndexed((element, index) => PopularStockItem(stock: element, number: index + 1)).toList()
     ],).pSymmetric(h: 20);
   }
 }
